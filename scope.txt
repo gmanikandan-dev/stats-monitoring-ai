@@ -1,0 +1,31 @@
+I have an application for reward system.I have used mongodb db.
+In this application, we can create a two rule.
+1)100 points to create an account. 
+2)50 points to ordered product.
+
+
+I prepared csv statistics for the given rules once daily.
+Here, csv is a input.
+Below is the example csv format.
+
+The report 2025-02-02 for store (client_name) 1001 | | |
+Points Earning Rules| | |
+Create an account | Earning value = 100 points | Limit of 1 per day |
+Daily Activity Data: | | |
+New Accounts Created Today: 1 customers created accounts today. | | |
+Total Points Awarded for Account Creation: 100 points. | | |
+
+here, | is the column.
+
+I am taking tenant based csv daily. I am taking 20-30 csv daily.
+
+I'm expecting you to provide me with a solution to feed data to LLM and get answer from LLM.
+Like, 
+Which tenant has more points overall?
+Which tenant has lower points overall?
+List week1 all tenant points.
+List week2 all tenant points.
+
+
+Need to implement POC in my local system with efficiency, quality and scalability.
+

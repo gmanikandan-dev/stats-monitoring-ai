@@ -1,0 +1,57 @@
+I have an application for reward system.I have used mongodb db.
+In this application, we can create a two rule.
+1)100 points to create an account. 
+2)50 points to ordered product.
+
+
+I prepared csv statistics for the given rules once daily.
+Here, csv is a input.
+
+CSV Input format look this,
+
+'tenant_name': "Roman corporate",
+'date': "2023-06-01",
+'new_accounts': 1,
+'account_points': 100,
+'total_account_points': 100,
+'orders': 5,
+'order_points': 50,
+'total_order_points': 250,
+'total_points': 350
+
+I am taking tenant based csv daily. I am taking 20-30 csv daily.
+
+I'm expecting you to provide me with a solution to feed data to LLM and get answer from LLM.
+Like, 
+Which tenant has more points overall?
+Which tenant has lower points overall?
+List week1 all tenant points.
+List week2 all tenant points.
+
+use LangChain,RAG and LLM technology.
+Need to implement POC in my local system with efficiency, quality and scalability.
+
+
+tenant_name	date	new_accounts	account_points	total_account_points
+AAA store	01-03-2025	1	100	100
+BBB store	01-03-2025	2	50	100
+CCC store	01-03-2025	1	500	500
+
+
+
+AAA store	02-03-2025	2	100	200
+BBB store	02-03-2025	1	50	50
+CCC store	02-03-2025	1	500	500
+
+
+AAA store	03-03-2025	5	100	500
+BBB store	03-03-2025	4	50	200
+CCC store	03-03-2025	2	500	1000
+
+
+AAA store	04-03-2025	1	100	100
+BBB store	04-03-2025	1	50	50
+
+AAA store	05-03-2025	1	100	100
+BBB store	05-03-2025	1	50	50
+CCC store	05-03-2025	3	500	1500

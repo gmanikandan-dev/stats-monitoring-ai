@@ -4,10 +4,12 @@
 ```
 python3 --version => 3.10.12
 ```
+
+
 >  _Step 1 :Starting local development server using below command: http://localhost:8000
 
 ````
-python3 csv-upload.py
+python3 app.py
 ````
 > _Step 2 : To upload your csv using below curl request
 ````

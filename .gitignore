@@ -6,3 +6,8 @@ faiss_index
 
 # Python Virtual Environment
 venv
+
+scope.txt
+scope2.txt
+
+*-bk.py

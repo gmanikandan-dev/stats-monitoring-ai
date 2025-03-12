@@ -48,12 +48,12 @@ except:
 retriever = vector_store.as_retriever()
 qa_chain = RetrievalQA.from_chain_type(llm, retriever=retriever)
 
-# Convert MongoDB records to text format
-def prepare_text_data(records):
-    return "\n".join([
-        f"Tenant: {record['tenant_name']}, Date: {record['date']}, Total Points: {record['total_account_points']}"
-        for record in records
-    ])
+# # Convert MongoDB records to text format
+# def prepare_text_data(records):
+#     return "\n".join([
+#         f"Tenant: {record['tenant_name']}, Date: {record['date']}, Total Points: {record['total_account_points']}"
+#         for record in records
+#     ])
 
 # Generate and store embeddings
 def generate_and_store_embeddings():
@@ -144,11 +144,11 @@ async def query_llm(start_date: str, end_date: str):
         # Prepare context for LLM
         context = "\n".join([json.dumps(record, default=serialize_datetime) for record in records])
         # query = f"Which tenant has the highest total account points between {start_date} and {end_date}?"
-        query = f"Overall total account points for CCC store between {start_date} and {end_date}?"
+        query = f"What is the sum of total_account_points for CCC store between {start_date} and {end_date}?"
 
         # Correct Chat Message Format
         prompt = ChatPromptTemplate.from_messages([
-            ("system", "You are an AI assistant analyzing tenant reward data."),
+            ("system", "You are a helpful assistant that can analyze CSV data.You can perform aggregation tasks like counting, summing, averaging, and finding the maximum, minimum, and average values of columns"),
             ("user", "{query}\n\n{context}")
         ])
 

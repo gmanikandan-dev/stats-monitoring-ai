@@ -10,4 +10,6 @@ venv
 scope.txt
 scope2.txt
 
-*-bk.py
+csv-upload-bk.py
+csv-upload-embeddings-bk.py
+csv-upload-query-bk.py

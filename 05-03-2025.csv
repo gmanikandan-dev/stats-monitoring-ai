@@ -1,4 +1,4 @@
-tenant_name,date,new_accounts,account_points,total_account_points
-AAA store,05-03-2025,1,100,100
-BBB store,05-03-2025,1,50,50
-CCC store,05-03-2025,3,500,500
+tenant_name,date,new_accounts,account_points,total_account_points,status
+AAA store,05-03-2025,1,100,100,pending
+BBB store,05-03-2025,1,50,50,pending
+CCC store,05-03-2025,3,500,500,pending

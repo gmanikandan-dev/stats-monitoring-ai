@@ -55,3 +55,79 @@ BBB store	04-03-2025	1	50	50
 AAA store	05-03-2025	1	100	100
 BBB store	05-03-2025	1	50	50
 CCC store	05-03-2025	3	500	500
+
+# Scope 1
+
+In my laravel scheduler prepare and store the csv on s3. 
+I want to automate the below steps using python with latest AI technologies.
+Scope:
+mongod db: reward_system
+collection : tenant_rewards (id,url,file_name)
+
+The url is available in the collection.
+
+Daily basis automaticaly read the csv files.
+Input csv file has following columns
+tenant_name: AAA store
+date : 01-03-2025
+new_accounts: 1
+account_points: 100
+total_account_points: 100
+
+here, we need to validate the total_account_points using below formula
+total_account_points=(new_accounts*account_points)
+
+Just validate each and every records. If you find the incorrect value just send mail to manikandan.g@targetbay.com with details like tenant_name and date
+
+To give me the suggestion to build that AI agent with cost effective technologies and to implement the POC in my local machine. 
+
+
+
+# Scope 2
+
+To build a AI Agent to validate the csv files daily basis
+Input csv file has the following columns with multiple rows
+
+tenant_name: AAA store 
+
+date : 01-03-2025 
+
+new_accounts: 1 
+
+account_points: 100 
+
+total_account_points: 100
+
+In future,
+
+new_orders: 2
+
+order_points: 200
+
+total_order_points: 400
+
+Here, we need to validate 
+
+total_account_points is equal to multiplication of new_accounts and account_points
+
+total_order_points is equal to multiplication of new_orders and order_points
+
+just validate the each and every rows and find out the incorrect tenant_name and date. Then send that details via email (example@gmail.com)
+
+
+# Scope 3
+I've csv files each file has only 1 row with multiple columns.
+It is a reward system conditions.
+
+The column and row like
+new_account : 4
+account_points: 20
+total_account_points: 80
+new_orders: 3
+order_points: 50
+total_account_points: 150
+
+What are the AI methods/tech to check the following condition with cost effective
+Rule: Reported total points should be equal to (new_accounts * account_points).
+Rule:Reported total order points should be equal to (new_orders * order_points).
+

@@ -148,7 +148,7 @@ async def query_llm(start_date: str, end_date: str):
 
         # Correct Chat Message Format
         prompt = ChatPromptTemplate.from_messages([
-            ("system", "You are a helpful assistant that can analyze CSV data.You can perform aggregation tasks like counting, summing, averaging, and finding the maximum, minimum, and average values of columns"),
+            ("system", "You are a helpful assistant that can analyze CSV data.You can perform aggregation tasks like counting, summing, averaging, and finding the maximum, minimum, and average values of columns. The response should be a number."),
             ("user", "{query}\n\n{context}")
         ])
 

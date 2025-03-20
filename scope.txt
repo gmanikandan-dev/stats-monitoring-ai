@@ -6,16 +6,18 @@ In this application, we can create a two rule.
 
 I prepared csv statistics for the given rules once daily.
 Here, csv is a input.
-Below is the example csv format.
 
-The report 2025-02-02 for store (client_name) 1001 | | |
-Points Earning Rules| | |
-Create an account | Earning value = 100 points | Limit of 1 per day |
-Daily Activity Data: | | |
-New Accounts Created Today: 1 customers created accounts today. | | |
-Total Points Awarded for Account Creation: 100 points. | | |
+CSV Input format look this,
 
-here, | is the column.
+'tenant_name': "Roman corporate",
+'date': "2023-06-01",
+'new_accounts': 1,
+'account_points': 100,
+'total_account_points': 100,
+'orders': 5,
+'order_points': 50,
+'total_order_points': 250,
+'total_points': 350
 
 I am taking tenant based csv daily. I am taking 20-30 csv daily.
 
@@ -26,6 +28,141 @@ Which tenant has lower points overall?
 List week1 all tenant points.
 List week2 all tenant points.
 
-
+use LangChain,RAG and LLM technology.
 Need to implement POC in my local system with efficiency, quality and scalability.
 
+
+tenant_name	date	new_accounts	account_points	total_account_points
+AAA store	01-03-2025	1	100	100
+BBB store	01-03-2025	2	50	100
+CCC store	01-03-2025	1	500	500
+
+
+
+AAA store	02-03-2025	2	100	200
+BBB store	02-03-2025	1	50	50
+CCC store	02-03-2025	1	500	500
+
+
+AAA store	03-03-2025	5	100	500
+BBB store	03-03-2025	4	50	200
+CCC store	03-03-2025	2	500	1000
+
+
+AAA store	04-03-2025	1	100	100
+BBB store	04-03-2025	1	50	50
+
+AAA store	05-03-2025	1	100	100
+BBB store	05-03-2025	1	50	50
+CCC store	05-03-2025	3	500	500
+
+# Scope 1
+
+In my laravel scheduler prepare and store the csv on s3. 
+I want to automate the below steps using python with latest AI technologies.
+Scope:
+mongod db: reward_system
+collection : tenant_rewards (id,url,file_name)
+
+The url is available in the collection.
+
+Daily basis automaticaly read the csv files.
+Input csv file has following columns
+tenant_name: AAA store
+date : 01-03-2025
+new_accounts: 1
+account_points: 100
+total_account_points: 100
+
+here, we need to validate the total_account_points using below formula
+total_account_points=(new_accounts*account_points)
+Just validate each and every records. If you find the incorrect value just send mail to manikandan.g@targetbay.com with details like tenant_name and date
+To give me the suggestion to build that AI agent with cost effective technologies and to implement the POC in my local machine. 
+
+
+
+# Scope 2
+
+To build a AI Agent to validate the csv files daily basis
+Input csv file has the following columns with multiple rows
+tenant_name: AAA store 
+date : 01-03-2025 
+new_accounts: 1 
+account_points: 100 
+total_account_points: 100
+
+In future,
+new_orders: 2
+order_points: 200
+total_order_points: 400
+Here, we need to validate 
+total_account_points is equal to multiplication of new_accounts and account_points
+total_order_points is equal to multiplication of new_orders and order_points
+just validate the each and every rows and find out the incorrect tenant_name and date. Then send that details via email (example@gmail.com)
+
+
+# Scope 3
+I've csv files each file has only 1 row with multiple columns.
+It is a reward system conditions.
+
+The column and row like
+new_account : 4
+account_points: 20
+total_account_points: 80
+new_orders: 3
+order_points: 50
+total_account_points: 150
+
+What are the AI methods/tech to check the following condition with cost effective
+Rule: Reported total points should be equal to (new_accounts * account_points).
+Rule:Reported total order points should be equal to (new_orders * order_points).
+
+Sample response:
+{
+    "response": {
+        "content": "To find the sum of `total_account_points` for the CCC store between 01-03-2025 and 03-03-2025, we need to add up the `total_account_points` for all entries that meet the criteria.\n\nHere are the entries that match:\n\n1. **Date:** 2025-03-01  \n   **Total Account Points:** 500\n\n2. **Date:** 2025-03-02  \n   **Total Account Points:** 500\n\n3. **Date:** 2025-03-03  \n   **Total Account Points:** 1000\n\n**Total Sum:** 500 + 500 + 1000 = **2000**\n\n**Answer: 2000**",
+        "additional_kwargs": {
+            "refusal": null
+        },
+        "response_metadata": {
+            "token_usage": {
+                "completion_tokens": 1120,
+                "prompt_tokens": 463,
+                "total_tokens": 1583,
+                "completion_tokens_details": {
+                    "accepted_prediction_tokens": 0,
+                    "audio_tokens": 0,
+                    "reasoning_tokens": 960,
+                    "rejected_prediction_tokens": 0
+                },
+                "prompt_tokens_details": {
+                    "audio_tokens": 0,
+                    "cached_tokens": 0
+                }
+            },
+            "model_name": "o1-preview-2024-09-12",
+            "system_fingerprint": "fp_24f97db9f8",
+            "finish_reason": "stop",
+            "logprobs": null
+        },
+        "type": "ai",
+        "name": null,
+        "id": "run-a3086d1f-2982-45ca-8094-30c8c46725a5-0",
+        "example": false,
+        "tool_calls": [],
+        "invalid_tool_calls": [],
+        "usage_metadata": {
+            "input_tokens": 463,
+            "output_tokens": 1120,
+            "total_tokens": 1583,
+            "input_token_details": {
+                "audio": 0,
+                "cache_read": 0
+            },
+            "output_token_details": {
+                "audio": 0,
+                "reasoning": 960
+            }
+        }
+    }
+}
